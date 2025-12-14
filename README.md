@@ -110,34 +110,38 @@ function caesarDecrypt(text, shift) {
   return caesarEncrypt(text, 26 - shift);
 }
 
-/* ===== VIGENÈRE ===== */
-function vigenereEncrypt(text, key) {
-  let res = "", j = 0;
-  key = key.toLowerCase();
-  for (let i = 0; i < text.length; i++) {
-    let c = text[i];
-    if (/[a-z]/i.test(c)) {
-      let shift = key[j++ % key.length].charCodeAt(0) - 97;
-      let base = c <= 'Z' ? 65 : 97;
-      res += String.fromCharCode((c.charCodeAt(0) - base + shift) % 26 + base);
-    } else res += c;
-  }
-  return res;
-}
-function vigenereDecrypt(text, key) {
-  let res = "", j = 0;
-  key = key.toLowerCase();
-  for (let i = 0; i < text.length; i++) {
-    let c = text[i];
-    if (/[a-z]/i.test(c)) {
-      let shift = key[j++ % key.length].charCodeAt(0) - 97;
-      let base = c <= 'Z' ? 65 : 97;
-      res += String.fromCharCode((c.charCodeAt(0) - base - shift + 26) % 26 + base);
-    } else res += c;
-  }
-  return res;
+
+function vigenereEncrypt(texto, clave) {
+    let res = "", j = 0;
+    clave = clave.toLowerCase();
+    for (let i = 0; i < texto.length; i++) {
+        let c = texto[i];
+        if (/[a-z]/i.test(c)) {
+            let shift = clave[j++ % clave.length].charCodeAt(0) - 97;
+            let base = c <= 'Z' ? 65 : 97;
+            res += String.fromCharCode((c.charCodeAt(0) - base + shift) % 26 + base);
+        } else {
+            res += c;
+        }
+    }
+    return res;
 }
 
+function vigenereDecrypt(texto, clave) {
+    let res = "", j = 0;
+    clave = clave.toLowerCase();
+    for (let i = 0; i < texto.length; i++) {
+        let c = texto[i];
+        if (/[a-z]/i.test(c)) {
+            let shift = clave[j++ % clave.length].charCodeAt(0) - 97;
+            let base = c <= 'Z' ? 65 : 97;
+            res += String.fromCharCode((c.charCodeAt(0) - base - shift + 26) % 26 + base);
+        } else {
+            res += c;
+        }
+    }
+    return res;
+}
 /* ===== TRANSPOSICIÓN ===== */
 function transpositionEncrypt(text, key) {
   let cols = key.length;
