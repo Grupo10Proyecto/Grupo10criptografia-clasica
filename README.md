@@ -40,7 +40,7 @@ Grupo 10 - Criptografía Clásica Página web.
 
 body {
   font-family: Arial, sans-serif;
-  background: #f4f6f8;
+  background: linear-gradient(to right, #1E90FF, #87CEFA); /* degradado azul */
   max-width: 700px;
   margin: auto;
   padding: 20px;
@@ -74,6 +74,8 @@ button {
   font-weight: bold;
   cursor: pointer;
 }
+
+
 
 function encrypt() {
   const alg = algorithm.value;
